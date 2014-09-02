@@ -16,3 +16,14 @@ Route::group( ['before' => 'auth'] , function()
 {
     Route::get( 'make-a-run' , 'HomeController@makeARun');
 });
+
+
+Route::get( 'foobar' , function()
+{
+
+    $data=  [];
+    Mail::send('emails.hello', $data, function($message)
+    {
+        $message->to('dan@soupbowl.ca', 'Dan Soppelsa')->subject('Welcome to the Website');
+    });
+});
